@@ -43,3 +43,21 @@ func UserCreate(c echo.Context) error {
 	}, "")
 
 }
+
+// TransactionFindByUserID ...
+func TransactionFindByUserID(c echo.Context) error {
+	var (
+		userID          = c.Param("id")
+	)
+
+	// process data
+	rawData, err := services.TransactionFindByUserID(userID)
+
+	// if err
+	if err != nil {
+		return util.Response400(c, nil, err.Error())
+	}
+
+	// Success
+	return util.Response200(c, rawData, "")
+}

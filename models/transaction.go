@@ -7,15 +7,16 @@ import (
 )
 
 type (
+
 	// TransactionDetail ...
 	TransactionDetail struct {
-		ID                       primitive.ObjectID 
-		CompanyID                primitive.ObjectID 
-		BranchID                 primitive.ObjectID 
-		UserID                   primitive.ObjectID 
-		Amount                   float64            
-		Commission               float64            
-		CompanyCashbackPercent   float64            
-		CreatedAt                time.Time          
+		ID                       primitive.ObjectID `json:"_id"`
+		CompanyID                primitive.ObjectID `json:"companyID"`
+		BranchID                 primitive.ObjectID `json:"branchID"`
+		UserID                   primitive.ObjectID `json:"userID"`
+		Amount                   float64            `json:"amount"`
+		Commission               float64            `json:"commission"`
+		CompanyCashbackPercent   float64            `json:"companyCashbackPercent"`
+		CreatedAt                time.Time          `json:"createdAt"`
 	}
 )

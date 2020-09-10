@@ -1,11 +1,12 @@
 package services
 
 import (
+	"errors"
 	"sort"
 	"sync"
-	"errors"
 
 	"demo-user/dao"
+	grpctransaction "demo-user/grpc/transaction"
 	"demo-user/models"
 )
 
@@ -64,4 +65,19 @@ func UserCreate(body models.UserCreatePayload) (models.UserBSON, error) {
 	}
 
 	return doc, err
+}
+
+// TransactionFindByUserID ...
+func TransactionFindByUserID(userID string) ([]models.TransactionDetail, error) {
+	var(
+		result = make([]models.TransactionDetail, 0)
+	)
+	// Call grpc get Transactions
+	result, err := grpctransaction.GetTransactionDetailByUserID(userID)
+	if err != nil{
+		err = errors.New(err.Error())
+		return result, err
+	}
+
+	return result, err
 }

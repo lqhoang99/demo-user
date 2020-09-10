@@ -89,6 +89,8 @@ github.com/labstack/gommon v0.3.0 h1:JEeO0bvc78PKdyHxloTKiF8BD5iGrH8T6MSeGvSgob0
 github.com/labstack/gommon v0.3.0/go.mod h1:MULnywXg0yavhxWKc+lOruYdAhDwPK9wf0OL7NoOu+k=
 github.com/lqhoang99/cashbag-proto v0.0.0-20200903070255-4f620ce0406e h1:LaO6HqJZbhkrXKUcEZzzBpKGGqYjVqq3gcgSMYXIQqY=
 github.com/lqhoang99/cashbag-proto v0.0.0-20200903070255-4f620ce0406e/go.mod h1:gZOGONv0HrnAwmiso2bUpzYdBerYo31oIjd6duLHTyg=
+github.com/lqhoang99/cashbag-proto v0.0.0-20200910063536-8cb6775a1fc3 h1:ldCLtUfS7Jz9vSSRrNMdka0PDHyaebycedb1syVu+jk=
+github.com/lqhoang99/cashbag-proto v0.0.0-20200910063536-8cb6775a1fc3/go.mod h1:gZOGONv0HrnAwmiso2bUpzYdBerYo31oIjd6duLHTyg=
 github.com/markbates/oncer v0.0.0-20181203154359-bf2de49a0be2/go.mod h1:Ld9puTsIW75CHf65OeIOkyKbteujpZVXDpWK6YGZbxE=
 github.com/markbates/safe v1.0.1/go.mod h1:nAqgmRi7cY2nqMc92/bSEeQA+R4OheNU2T1kNSCBdG0=
 github.com/mattn/go-colorable v0.1.2/go.mod h1:U0ppj6V5qS13XJ6of8GYAs25YV2eR4EVcfRqFIhoBtE=
