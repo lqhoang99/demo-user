@@ -6,7 +6,7 @@ import (
 
 	"go.mongodb.org/mongo-driver/bson"
 
-	userpb "demo-transaction/proto/models/user"
+	userpb "demo-user/proto/models/user"
 	"demo-user/dao"
 )
 

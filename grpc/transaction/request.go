@@ -1,13 +1,14 @@
 package grpcuser
 
 import (
-	"log"
 	"context"
+	"log"
 	"time"
 
 	"demo-user/models"
-	transactionpb "demo-transaction/proto/models/transaction"
+	transactionpb "demo-user/proto/models/transaction"
 )
+
 // GetTransactionDetailByUserID ...
 func GetTransactionDetailByUserID(userID string) (transactions []models.TransactionDetail, err error) {
 	clientConn, client := CreateClient()
@@ -20,9 +21,8 @@ func GetTransactionDetailByUserID(userID string) (transactions []models.Transact
 	result, err := client.GetTransactionDetailByUserID(ctx, &transactionpb.GetTransactionDetailByUserIDRequest{UserID: userID})
 	if err != nil {
 		log.Printf("Call grpc get transaction by userID error %v\n", err)
-		return 
+		return
 	}
-	log.Println("result:",result)
 
 	// Convert to user brief
 	transactions = convertToTransactionDetailList(result.TransactionDetail)
