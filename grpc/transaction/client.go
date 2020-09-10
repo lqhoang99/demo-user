@@ -5,8 +5,8 @@ import (
 
 	"google.golang.org/grpc"
 
-	transactionpb "demo-transaction/proto/models/transaction"
 	"demo-user/config"
+	transactionpb "demo-user/proto/models/transaction"
 )
 
 // CreateClient ...

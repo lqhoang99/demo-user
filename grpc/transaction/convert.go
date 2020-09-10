@@ -2,11 +2,11 @@ package grpcuser
 
 import (
 	"sort"
-	"demo-user/util"
 	"sync"
-
-	transactionpb "demo-transaction/proto/models/transaction"
+	
+	"demo-user/util"
 	"demo-user/models"
+	transactionpb "demo-user/proto/models/transaction"
 )
 
 func convertToTransactionDetailList(data []*transactionpb.TransactionDetail) []models.TransactionDetail {

@@ -7,7 +7,7 @@ import (
 
 	"google.golang.org/grpc"
 
-	userpb "demo-transaction/proto/models/user"
+	userpb "demo-user/proto/models/user"
 	"demo-user/config"
 )
 
