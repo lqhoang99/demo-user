@@ -1,0 +1,24 @@
+version: '3'
+services:
+    web:
+        depends_on: 
+            - zookeeper
+        environment: 
+            - ZOOKEEPER_URI=zookeeper:2181
+        build: .
+        ports:
+            - "8082:8082"
+        networks: 
+            - web-user
+    zookeeper:
+        image: zookeeper
+        container_name: zookeeper
+        restart: always
+        volumes:
+            - /home/hoang/zookeeper:/data
+        ports:
+            - 2181:2181
+        networks: 
+            - web-user   
+networks: 
+    web-user:

@@ -17,7 +17,17 @@ type ENV struct {
 		Name       string
 	}
 
-	GRPCUri string
+	// gRPC addresses
+	GRPCAddresses struct {
+		User        string
+		Transaction string
+	}
+
+	// gRPC ports
+	GRPCPorts struct {
+		User        string
+		Transaction string
+	}
 }
 
 var env ENV
