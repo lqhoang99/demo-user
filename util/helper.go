@@ -1,10 +1,11 @@
 package util
 
 import (
-	"github.com/golang/protobuf/ptypes"
 	"time"
-	"google.golang.org/protobuf/types/known/timestamppb"
+
+	"github.com/golang/protobuf/ptypes"
 	"go.mongodb.org/mongo-driver/bson/primitive"
+	"google.golang.org/protobuf/types/known/timestamppb"
 )
 
 // HelperParseStringToObjectID ...
@@ -13,8 +14,8 @@ func HelperParseStringToObjectID(val string) primitive.ObjectID {
 	return result
 }
 
-// HelperConvertTimeToTimestampProto ...
-func HelperConvertTimestampProtoToTime(t *timestamppb.Timestamp) (time.Time) {
+// HelperConvertTimestampProtoToTime ...
+func HelperConvertTimestampProtoToTime(t *timestamppb.Timestamp) time.Time {
 	result, _ := ptypes.Timestamp(t)
 	return result
 }
