@@ -4,4 +4,4 @@
 docker-compose up --build
 
 # Check test coverage
-go test ./...  -coverprofile=coverage.out
+Make coverage
