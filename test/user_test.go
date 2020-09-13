@@ -108,7 +108,7 @@ func (suite *UserListTestSuite) SetupSuite() {
 }
 
 func (suite *UserListTestSuite) TearDownSuite() {
-	//removeOldDataUser()
+	removeOldDataUser()
 }
 
 func (suite *UserListTestSuite) TestUserListSuccess() {
@@ -229,5 +229,5 @@ func TestUserSuite(t *testing.T) {
 }
 
 func removeOldDataUser() {
-	database.UserTestCol().DeleteMany(context.Background(), bson.M{})
+	database.UserCol().DeleteMany(context.Background(), bson.M{})
 }
