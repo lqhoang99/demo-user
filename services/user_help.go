@@ -8,7 +8,6 @@ import (
 	"demo-user/models"
 )
 
-// UserCreatePayloadToBSON ...
 func userCreatePayloadToBSON(body models.UserCreatePayload) models.UserBSON {
 	result := models.UserBSON{
 		ID:        primitive.NewObjectID(),

@@ -69,12 +69,12 @@ func UserCreate(body models.UserCreatePayload) (models.UserBSON, error) {
 
 // TransactionFindByUserID ...
 func TransactionFindByUserID(userID string) ([]models.TransactionDetail, error) {
-	var(
+	var (
 		result = make([]models.TransactionDetail, 0)
 	)
 	// Call grpc get Transactions
 	result, err := grpctransaction.GetTransactionDetailByUserID(userID)
-	if err != nil{
+	if err != nil {
 		err = errors.New(err.Error())
 		return result, err
 	}

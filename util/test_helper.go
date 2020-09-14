@@ -3,12 +3,12 @@ package util
 import (
 	"bytes"
 	"context"
-	"demo-user/config"
 	"encoding/json"
 	"fmt"
 	"io"
 	"log"
 
+	"demo-user/config"
 	"demo-user/models"
 	"demo-user/modules/database"
 )
