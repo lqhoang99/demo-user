@@ -5,16 +5,16 @@ type ENV struct {
 	IsDev bool
 
 	// ZookeeperURI
-	ZookeeperURI     string
+	ZookeeperURI string
 
 	// App port
 	AppPort string
 
 	// Database
 	Database struct {
-		URI            string
-		TestName       string
-		Name       string
+		URI      string
+		TestName string
+		Name     string
 	}
 
 	// gRPC addresses

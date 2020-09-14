@@ -7,8 +7,8 @@ import (
 
 	"google.golang.org/grpc"
 
-	userpb "demo-user/proto/models/user"
 	"demo-user/config"
+	userpb "demo-user/proto/models/user"
 )
 
 // Node ...
@@ -16,13 +16,13 @@ type Node struct{}
 
 // GetUserBriefByID ...
 func (s *Node) GetUserBriefByID(ctx context.Context, req *userpb.GetUserBriefByIDRequest) (*userpb.GetUserBriefByIDResponse, error) {
-	var (
-		userID = req.GetUserID()
-	)
 
 	// Get user by id
-	result, err := getUserBriefByID(userID)
+	data, err := getUserBriefByID(req.GetUserID())
 
+	result := &userpb.GetUserBriefByIDResponse{
+		UserBrief: data,
+	}
 	return result, err
 }
 
@@ -35,8 +35,9 @@ func (s *Node) UpdateUserStatsByID(ctx context.Context, req *userpb.UpdateUserSt
 	)
 
 	// Update userStats
-	result, err := updateUserStatsByID(userID, totalTransaction, totalCommission)
+	err := updateUserStatsByID(userID, totalTransaction, totalCommission)
 
+	result := &userpb.UpdateUserStatsByIDResponse{}
 	return result, err
 }
 
@@ -55,6 +56,7 @@ func Start() {
 	s := grpc.NewServer()
 	userpb.RegisterUserServiceServer(s, &Node{})
 
+	// Start Server
 	log.Println(" gRPC server started on port:" + userPort)
 	err = s.Serve(lis)
 	if err != nil {

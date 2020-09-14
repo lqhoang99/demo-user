@@ -1,16 +1,16 @@
 package grpcnode
 
 import (
-	"demo-user/util"
 	"errors"
 
 	"go.mongodb.org/mongo-driver/bson"
 
-	userpb "demo-user/proto/models/user"
 	"demo-user/dao"
+	userpb "demo-user/proto/models/user"
+	"demo-user/util"
 )
 
-func getUserBriefByID(userIDString string) (*userpb.GetUserBriefByIDResponse, error) {
+func getUserBriefByID(userIDString string) (*userpb.UserBrief, error) {
 	var (
 		userID = util.HelperParseStringToObjectID(userIDString)
 	)
@@ -18,23 +18,21 @@ func getUserBriefByID(userIDString string) (*userpb.GetUserBriefByIDResponse, er
 	// Find User
 	user, err := dao.UserFindByID(userID)
 	if err != nil {
-		err = errors.New("Not Found User by ID")
+		err = errors.New("Not found user by ID")
 		return nil, err
 	}
 
 	// Success
-	result := &userpb.GetUserBriefByIDResponse{
-		UserBrief: &userpb.UserBrief{
-			Id:               userIDString,
-			Name:             user.Name,
-			TotalTransaction: user.TotalTransaction,
-			TotalCommission:  user.TotalCommission,
-		},
+	result := &userpb.UserBrief{
+		Id:               userIDString,
+		Name:             user.Name,
+		TotalTransaction: user.TotalTransaction,
+		TotalCommission:  user.TotalCommission,
 	}
 	return result, nil
 }
 
-func updateUserStatsByID(userIDString string, totalTransaction int64, totalCommission float64) (*userpb.UpdateUserStatsByIDResponse, error) {
+func updateUserStatsByID(userIDString string, totalTransaction int64, totalCommission float64) error {
 	var (
 		userID = util.HelperParseStringToObjectID(userIDString)
 	)
@@ -50,10 +48,7 @@ func updateUserStatsByID(userIDString string, totalTransaction int64, totalCommi
 	err := dao.UserUpdateByID(filter, update)
 	if err != nil {
 		err = errors.New("Update userStats error")
-		return nil, err
+		return err
 	}
-
-	// Success
-	result := &userpb.UpdateUserStatsByIDResponse{}
-	return result, nil
+	return nil
 }

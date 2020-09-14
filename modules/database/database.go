@@ -20,7 +20,7 @@ var (
 func Connect() {
 	envVars := config.GetEnv()
 
-	// Set Client
+	// Connect Client
 	cl, err := mongo.Connect(context.Background(), options.Client().ApplyURI(envVars.Database.URI))
 	if err != nil {
 		log.Println("err", err)

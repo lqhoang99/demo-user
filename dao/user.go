@@ -52,7 +52,6 @@ func UserFindByID(id primitive.ObjectID) (models.UserBSON, error) {
 
 	// Find
 	err := userCol.FindOne(ctx, filter).Decode(&result)
-
 	return result, err
 }
 
@@ -60,10 +59,10 @@ func UserFindByID(id primitive.ObjectID) (models.UserBSON, error) {
 func UserUpdateByID(filter bson.M, updateData bson.M) (err error) {
 	var (
 		userCol = database.UserCol()
-		ctx       = context.Background()
+		ctx     = context.Background()
 	)
 
+	// Update
 	_, err = userCol.UpdateOne(ctx, filter, updateData)
-
 	return err
 }

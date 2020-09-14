@@ -2,25 +2,23 @@ package test
 
 import (
 	"context"
-	"demo-user/apptest"
-	"demo-user/modules/database"
-
-	"go.mongodb.org/mongo-driver/bson"
-
-	"github.com/labstack/echo/v4"
-	"github.com/stretchr/testify/assert"
-	"github.com/stretchr/testify/suite"
-
 	"encoding/json"
 	"net/http"
 	"net/http/httptest"
 	"testing"
 
+	"github.com/labstack/echo/v4"
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/suite"
+	"go.mongodb.org/mongo-driver/bson"
+
+	"demo-user/apptest"
 	"demo-user/models"
+	"demo-user/modules/database"
 	"demo-user/util"
 )
 
-// Test Create User
+// Test UserCreate
 type UserCreateTestSuite struct {
 	suite.Suite
 	e    *echo.Echo
@@ -58,10 +56,10 @@ func (suite *UserCreateTestSuite) TestUserCreateSuccess() {
 	// Run HTTP server
 	suite.e.ServeHTTP(rec, req)
 
-	//Parse
+	// Parse
 	json.Unmarshal([]byte(rec.Body.String()), &response)
 
-	//Test
+	// Test
 	assert.Equal(suite.T(), http.StatusOK, rec.Code)
 	assert.NotEqual(suite.T(), nil, response["data"])
 }
@@ -82,15 +80,15 @@ func (suite *UserCreateTestSuite) TestUserCreateFailureWithInvalidName() {
 	// Run HTTP server
 	suite.e.ServeHTTP(rec, req)
 
-	//Parse
+	// Parse
 	json.Unmarshal([]byte(rec.Body.String()), &response)
 
-	//Test
+	// Test
 	assert.Equal(suite.T(), http.StatusBadRequest, rec.Code)
 	assert.Equal(suite.T(), nil, response["data"])
 }
 
-// Test List User
+// Test UserList
 type UserListTestSuite struct {
 	suite.Suite
 	e *echo.Echo
@@ -124,15 +122,15 @@ func (suite *UserListTestSuite) TestUserListSuccess() {
 	// Run HTTP server
 	suite.e.ServeHTTP(rec, req)
 
-	//Parse
+	// Parse
 	json.Unmarshal([]byte(rec.Body.String()), &response)
 
-	//Test
+	// Test
 	assert.Equal(suite.T(), http.StatusOK, rec.Code)
 	assert.NotEqual(suite.T(), nil, response["data"])
 }
 
-// Test Get Transaction BY UserID
+// Test TransactionFindByUserID
 type TransactionFindByUserIDTestSuite struct {
 	suite.Suite
 	e        *echo.Echo
@@ -168,10 +166,10 @@ func (suite *TransactionFindByUserIDTestSuite) TestTransactionFindByUserIDSucces
 	// Run HTTP server
 	suite.e.ServeHTTP(rec, req)
 
-	//Parse
+	// Parse
 	json.Unmarshal([]byte(rec.Body.String()), &response)
 
-	//Test
+	// Test
 	assert.Equal(suite.T(), http.StatusOK, rec.Code)
 	assert.Equal(suite.T(), "Thanh Cong!", response["message"])
 }
@@ -222,7 +220,7 @@ func (suite *TransactionFindByUserIDTestSuite) TestTransactionFindByUserIDFailur
 	assert.Equal(suite.T(), nil, response["data"])
 }
 
-func TestUserSuite(t *testing.T) {
+func TestUserTestSuite(t *testing.T) {
 	suite.Run(t, new(UserCreateTestSuite))
 	suite.Run(t, new(UserListTestSuite))
 	suite.Run(t, new(TransactionFindByUserIDTestSuite))

@@ -14,14 +14,14 @@ func userCheckExistedByID(next echo.HandlerFunc) echo.HandlerFunc {
 			userID = c.Get("userID").(primitive.ObjectID)
 		)
 
+		// Find
 		user, _ := dao.UserFindByID(userID)
 
 		// check existed
 		if user.ID.IsZero() {
 			return util.Response404(c, nil, "Not found user")
 		}
-
 		return next(c)
 	}
-	
+
 }
