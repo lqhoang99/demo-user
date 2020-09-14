@@ -14,11 +14,11 @@ import (
 )
 
 var (
-	userIDString = "5f24d45125ea51bc57a8285a"
+	userIDString = "5f58f899b3d106cbfcecd113"
 	userID       = HelperParseStringToObjectID(userIDString)
 	user         = models.UserBSON{
 		ID:   userID,
-		Name: "Phuc",
+		Name: "UserTest",
 	}
 )
 

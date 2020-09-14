@@ -1,0 +1,52 @@
+{
+    "$id": "user_detail.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "required": [
+        "data",
+        "message"
+    ],
+    "properties": {
+        "data": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/user"
+            }
+        }
+    },
+    "definitions": {
+        "user": {
+            "type": "object",
+            "required": [
+                "_id",
+                "name",
+                "totalTransaction",
+                "totalCommission",
+                "createdAt",
+                "updatedAt"
+            ],
+            "properties": {
+                "_id": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "totalTransaction": {
+                    "type": "integer"
+                },
+                "totalCommission": {
+                    "type": "number"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "format": "date-time"
+                }
+            }
+        }
+    }
+}
