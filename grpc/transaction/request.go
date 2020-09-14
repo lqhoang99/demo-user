@@ -11,9 +11,9 @@ import (
 
 // GetTransactionDetailByUserID ...
 func GetTransactionDetailByUserID(userID string) (transactions []models.TransactionDetail, err error) {
+	// Setup client
 	clientConn, client := CreateClient()
 	defer clientConn.Close()
-
 	ctx, cancel := context.WithTimeout(context.Background(), 2*time.Second)
 	defer cancel()
 
