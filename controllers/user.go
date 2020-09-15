@@ -29,14 +29,14 @@ func UserCreate(c echo.Context) error {
 		body = c.Get("body").(models.UserCreatePayload)
 	)
 
-	//Process data
+	// Process data
 	rawData, err := services.UserCreate(body)
 
 	if err != nil {
 		return util.Response400(c, nil, err.Error())
 	}
 
-	//Success
+	// Success
 	return util.Response200(c, bson.M{
 		"_id":       rawData.ID,
 		"createdAt": rawData.CreatedAt,
@@ -50,7 +50,7 @@ func TransactionFindByUserID(c echo.Context) error {
 		userID          = c.Param("id")
 	)
 
-	// process data
+	// Process data
 	rawData, err := services.TransactionFindByUserID(userID)
 
 	// if err

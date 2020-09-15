@@ -7,7 +7,6 @@ import (
 )
 
 type (
-
 	// UserBSON ...
 	UserBSON struct {
 		ID               primitive.ObjectID `bson:"_id"`

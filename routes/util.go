@@ -17,7 +17,7 @@ func userCheckExistedByID(next echo.HandlerFunc) echo.HandlerFunc {
 		// Find
 		user, _ := dao.UserFindByID(userID)
 
-		// check existed
+		// Check existed
 		if user.ID.IsZero() {
 			return util.Response404(c, nil, "Not found user")
 		}
