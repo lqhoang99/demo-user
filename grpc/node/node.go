@@ -46,17 +46,17 @@ func Start() {
 	envVars := config.GetEnv()
 	userPort := envVars.GRPCPorts.User
 
-	// Create Listen
+	// Create listen
 	lis, err := net.Listen("tcp", userPort)
 	if err != nil {
 		log.Fatalf("err while create listen %v", err)
 	}
 
-	// Create Service Server
+	// Create service server
 	s := grpc.NewServer()
 	userpb.RegisterUserServiceServer(s, &Node{})
 
-	// Start Server
+	// Start server
 	log.Println(" gRPC server started on port:" + userPort)
 	err = s.Serve(lis)
 	if err != nil {

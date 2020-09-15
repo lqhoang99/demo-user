@@ -17,7 +17,7 @@ func GetTransactionDetailByUserID(userID string) (transactions []models.Transact
 	ctx, cancel := context.WithTimeout(context.Background(), 2*time.Second)
 	defer cancel()
 
-	// Call
+	// Call GetTransactionDetailByUserID
 	result, err := client.GetTransactionDetailByUserID(ctx, &transactionpb.GetTransactionDetailByUserIDRequest{UserID: userID})
 	if err != nil {
 		log.Printf("Call grpc get transaction by userID error %v\n", err)

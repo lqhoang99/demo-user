@@ -42,6 +42,7 @@ func UserValidateID(next echo.HandlerFunc) echo.HandlerFunc {
 			return util.Response400(c, nil, "ID khong hop le")
 		}
 
+		// Success
 		c.Set("userID", userID)
 		return next(c)
 	}

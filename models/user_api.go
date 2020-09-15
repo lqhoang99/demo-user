@@ -6,7 +6,6 @@ import (
 )
 
 type (
-
 	// UserCreatePayload ...
 	UserCreatePayload struct {
 		Name string `json:"name" valid:"stringlength(3|30),type(string)"`

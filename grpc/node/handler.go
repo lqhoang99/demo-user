@@ -44,7 +44,7 @@ func updateUserStatsByID(userIDString string, totalTransaction int64, totalCommi
 		"totalCommission":  totalCommission,
 	}}
 
-	// Update User
+	// Update user
 	err := dao.UserUpdateByID(filter, update)
 	if err != nil {
 		err = errors.New("Update userStats error")
