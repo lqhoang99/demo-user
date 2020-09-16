@@ -13,5 +13,5 @@ func User(e *echo.Echo) {
 
 	routes.GET("", controllers.UserList)
 	routes.POST("", controllers.UserCreate, validations.UserCreate)
-	routes.GET("/:id/transactions", controllers.TransactionFindByUserID, validations.UserValidateID, userCheckExistedByID)
+	routes.GET("/:id/transactions", controllers.TransactionFindByUserID, validations.UserValidateID)
 }

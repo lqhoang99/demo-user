@@ -7,18 +7,18 @@ import (
 
 	"demo-user/dao"
 	userpb "demo-user/proto/models/user"
-	"demo-user/util"
+	"demo-user/utils"
 )
 
 func getUserBriefByID(userIDString string) (*userpb.UserBrief, error) {
 	var (
-		userID = util.HelperParseStringToObjectID(userIDString)
+		userID = utils.HelperParseStringToObjectID(userIDString)
 	)
 
 	// Find User
 	user, err := dao.UserFindByID(userID)
 	if err != nil {
-		err = errors.New("Not found user by ID")
+		err = errors.New("not found user by ID")
 		return nil, err
 	}
 
@@ -34,7 +34,7 @@ func getUserBriefByID(userIDString string) (*userpb.UserBrief, error) {
 
 func updateUserStatsByID(userIDString string, totalTransaction int64, totalCommission float64) error {
 	var (
-		userID = util.HelperParseStringToObjectID(userIDString)
+		userID = utils.HelperParseStringToObjectID(userIDString)
 	)
 
 	// Set filter and update
