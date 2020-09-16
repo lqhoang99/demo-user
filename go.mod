@@ -2,10 +2,7 @@ module demo-user
 
 go 1.14
 
-replace demo-user/proto v0.0.0 => ./proto
-
 require (
-	demo-user/proto v0.0.0
 	github.com/asaskevich/govalidator v0.0.0-20200819183940-29e1ff8eb0bb
 	github.com/go-ozzo/ozzo-validation/v4 v4.2.2
 	github.com/golang/protobuf v1.4.2
