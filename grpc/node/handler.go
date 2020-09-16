@@ -18,7 +18,7 @@ func getUserBriefByID(userIDString string) (*userpb.UserBrief, error) {
 	// Find User
 	user, err := dao.UserFindByID(userID)
 	if err != nil {
-		err = errors.New("Not found user by ID")
+		err = errors.New("not found user by ID")
 		return nil, err
 	}
 
