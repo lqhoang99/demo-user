@@ -52,15 +52,15 @@ func UserList() ([]models.UserDetail, error) {
 }
 
 // UserCreate ...
-func UserCreate(body models.UserCreatePayload) (models.UserBSON, error) {
+func UserCreate(payload models.UserCreatePayload) (models.UserBSON, error) {
 	var (
-		user = userCreatePayloadToBSON(body)
+		user = payload.ConvertToBSON()
 	)
 
 	//Create user
 	doc, err := dao.UserCreate(user)
 	if err != nil {
-		err = errors.New("Khong the tao user")
+		err = errors.New("khong the tao user")
 		return doc, err
 	}
 

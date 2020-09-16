@@ -5,5 +5,5 @@ run:
 test:
 	go test ./... -v
 coverage:
-	go test -v -coverpkg=./... -coverprofile=coverage.out ./...
+	go test ./... -coverprofile=coverage.out
 .PHONY: all test clean
