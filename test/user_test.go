@@ -66,7 +66,7 @@ func (suite *UserCreateTestSuite) TestUserCreateSuccess() {
 	assert.NotEqual(suite.T(), nil, response["data"])
 }
 
-func (suite *UserCreateTestSuite) TestUserCreateFailureWithInvalidName() {
+func (suite *UserCreateTestSuite) TestFail() {
 	var (
 		payload = models.UserCreatePayload{
 			Name: "a",
@@ -165,7 +165,7 @@ func (suite *TransactionFindByUserIDTestSuite) TestTransactionFindByUserIDSucces
 	req.Header.Set(echo.HeaderContentType, echo.MIMEApplicationJSON)
 	rec := httptest.NewRecorder()
 
-	// Run HTTP server
+	// Run HTTP server	
 	suite.e.ServeHTTP(rec, req)
 
 	//Parse
@@ -176,28 +176,28 @@ func (suite *TransactionFindByUserIDTestSuite) TestTransactionFindByUserIDSucces
 	assert.Equal(suite.T(), "Thanh Cong!", response["message"])
 }
 
-func (suite *TransactionFindByUserIDTestSuite) TestTransactionFindByUserIDFailureWithInvalidUserID() {
-	var (
-		response util.Response
-		paramURL = "123"
-	)
+	func (suite *TransactionFindByUserIDTestSuite) TestTransactionFindByUserIDFailureWithInvalidUserID() {
+		var (
+			response util.Response
+			paramURL = "123"
+		)
 
-	// Setup request
-	url := "/users/" + paramURL + "/transactions"
-	req, _ := http.NewRequest(http.MethodGet, url, nil)
-	req.Header.Set(echo.HeaderContentType, echo.MIMEApplicationJSON)
-	rec := httptest.NewRecorder()
+		// Setup request
+		url := "/users/" + paramURL + "/transactions"
+		req, _ := http.NewRequest(http.MethodGet, url, nil)
+		req.Header.Set(echo.HeaderContentType, echo.MIMEApplicationJSON)
+		rec := httptest.NewRecorder()
 
-	// Run HTTP server
-	suite.e.ServeHTTP(rec, req)
+		// Run HTTP server
+		suite.e.ServeHTTP(rec, req)
 
-	// Parse
-	json.Unmarshal([]byte(rec.Body.String()), &response)
+		// Parse
+		json.Unmarshal([]byte(rec.Body.String()), &response)
 
-	// Test
-	assert.Equal(suite.T(), http.StatusBadRequest, rec.Code)
-	assert.Equal(suite.T(), nil, response["data"])
-}
+		// Test
+		assert.Equal(suite.T(), http.StatusBadRequest, rec.Code)
+		assert.Equal(suite.T(), nil, response["data"])
+	}
 
 func (suite *TransactionFindByUserIDTestSuite) TestTransactionFindByUserIDFailureWithNotFoundUser() {
 	var (

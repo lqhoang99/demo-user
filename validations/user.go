@@ -34,7 +34,7 @@ func UserValidateID(next echo.HandlerFunc) echo.HandlerFunc {
 	return func(c echo.Context) error {
 		var (
 			id          = c.Param("id")
-			userID, err = util.ValidationObjectID(id)
+			userID, err = util.HelperParseStringToObjectID(id)
 		)
 
 		// if err

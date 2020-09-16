@@ -9,9 +9,9 @@ import (
 )
 
 // HelperParseStringToObjectID ...
-func HelperParseStringToObjectID(val string) primitive.ObjectID {
-	result, _ := primitive.ObjectIDFromHex(val)
-	return result
+func HelperParseStringToObjectID(val string) (primitive.ObjectID,error) {
+	result, err := primitive.ObjectIDFromHex(val)
+	return result,err
 }
 
 // HelperConvertTimestampProtoToTime ...

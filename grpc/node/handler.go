@@ -12,7 +12,7 @@ import (
 
 func getUserBriefByID(userIDString string) (*userpb.GetUserBriefByIDResponse, error) {
 	var (
-		userID = util.HelperParseStringToObjectID(userIDString)
+		userID,_ = util.HelperParseStringToObjectID(userIDString)
 	)
 
 	// Find User
@@ -36,7 +36,7 @@ func getUserBriefByID(userIDString string) (*userpb.GetUserBriefByIDResponse, er
 
 func updateUserStatsByID(userIDString string, totalTransaction int64, totalCommission float64) (*userpb.UpdateUserStatsByIDResponse, error) {
 	var (
-		userID = util.HelperParseStringToObjectID(userIDString)
+		userID,_ = util.HelperParseStringToObjectID(userIDString)
 	)
 
 	// Set filter and update
