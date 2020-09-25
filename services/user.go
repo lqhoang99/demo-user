@@ -33,6 +33,7 @@ func UserList() ([]models.UserDetail, error) {
 		go func(index int) {
 			defer wg.Done()
 
+			// test
 			// Convert to UserDetail
 			user := convertToUserDetail(users[index])
 
