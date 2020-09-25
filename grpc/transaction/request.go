@@ -20,7 +20,7 @@ func GetTransactionDetailByUserID(userID string) (transactions []models.Transact
 	// Call GetTransactionDetailByUserID
 	result, err := client.GetTransactionDetailByUserID(ctx, &transactionpb.GetTransactionDetailByUserIDRequest{UserID: userID})
 	if err != nil {
-		log.Printf("Call grpc get transaction by userID error %v\n", err)
+		log.Printf("call grpc get transaction by userID error %v\n", err)
 		return
 	}
 

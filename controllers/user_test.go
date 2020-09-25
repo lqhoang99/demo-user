@@ -1,4 +1,4 @@
-package test
+package controllers_test
 
 import (
 	"context"
@@ -17,7 +17,7 @@ import (
 	"demo-user/apptest"
 	"demo-user/models"
 	"demo-user/modules/database"
-	"demo-user/util"
+	"demo-user/utils"
 )
 
 // Test UserCreate
@@ -47,12 +47,12 @@ func (suite *UserCreateTestSuite) TearDownSuite() {
 func (suite *UserCreateTestSuite) TestUserCreateSuccess() {
 	var (
 		payload      = suite.data
-		response     util.Response
+		response     utils.Response
 		schemaLoader = gojsonschema.NewReferenceLoader("file:///home/hoang/Documents/Company/demo-user/schemas/user_create.json")
 	)
 
 	// Setup request
-	req, _ := http.NewRequest(http.MethodPost, "/users", util.HelperToIOReader(payload))
+	req, _ := http.NewRequest(http.MethodPost, "/users", utils.HelperToIOReader(payload))
 	req.Header.Set(echo.HeaderContentType, echo.MIMEApplicationJSON)
 	rec := httptest.NewRecorder()
 
@@ -90,11 +90,11 @@ func (suite *UserCreateTestSuite) TestUserCreateFailureWithInvalidName() {
 		payload = models.UserCreatePayload{
 			Name: "a",
 		}
-		response util.Response
+		response utils.Response
 	)
 
 	// Setup request
-	req, _ := http.NewRequest(http.MethodPost, "/users", util.HelperToIOReader(payload))
+	req, _ := http.NewRequest(http.MethodPost, "/users", utils.HelperToIOReader(payload))
 	req.Header.Set(echo.HeaderContentType, echo.MIMEApplicationJSON)
 	rec := httptest.NewRecorder()
 
@@ -123,7 +123,7 @@ func (suite *UserListTestSuite) SetupSuite() {
 	removeOldDataUser()
 
 	// Setup data
-	util.HelperUserCreateFake()
+	utils.HelperUserCreateFake()
 }
 
 func (suite *UserListTestSuite) TearDownSuite() {
@@ -132,7 +132,7 @@ func (suite *UserListTestSuite) TearDownSuite() {
 
 func (suite *UserListTestSuite) TestUserListSuccess() {
 	var (
-		response     util.Response
+		response     utils.Response
 		schemaLoader = gojsonschema.NewReferenceLoader("file:///home/hoang/Documents/Company/demo-user/schemas/user_detail.json")
 	)
 
@@ -185,7 +185,7 @@ func (suite *TransactionFindByUserIDTestSuite) SetupSuite() {
 	removeOldDataUser()
 
 	// Setup param data
-	suite.paramURL = util.HelperUserCreateFake()
+	suite.paramURL = utils.HelperUserCreateFake()
 }
 
 func (suite *TransactionFindByUserIDTestSuite) TearDownSuite() {
@@ -194,7 +194,7 @@ func (suite *TransactionFindByUserIDTestSuite) TearDownSuite() {
 
 func (suite *TransactionFindByUserIDTestSuite) TestTransactionFindByUserIDSuccess() {
 	var (
-		response     util.Response
+		response     utils.Response
 		schemaLoader = gojsonschema.NewReferenceLoader("file:///home/hoang/Documents/Company/demo-user/schemas/transaction_detail.json")
 	)
 
@@ -235,7 +235,7 @@ func (suite *TransactionFindByUserIDTestSuite) TestTransactionFindByUserIDSucces
 
 func (suite *TransactionFindByUserIDTestSuite) TestTransactionFindByUserIDFailureWithInvalidUserID() {
 	var (
-		response util.Response
+		response utils.Response
 		paramURL = "123"
 	)
 
@@ -258,7 +258,7 @@ func (suite *TransactionFindByUserIDTestSuite) TestTransactionFindByUserIDFailur
 
 func (suite *TransactionFindByUserIDTestSuite) TestTransactionFindByUserIDFailureWithNotFoundUser() {
 	var (
-		response util.Response
+		response utils.Response
 		paramURL = "5f24d45125ea51bc11111111"
 	)
 

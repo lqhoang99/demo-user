@@ -8,7 +8,7 @@ import (
 	"demo-user/modules/database"
 	"demo-user/modules/zookeeper"
 	"demo-user/routes"
-	"demo-user/util"
+	"demo-user/utils"
 )
 
 // InitServer ...
@@ -16,7 +16,7 @@ func InitServer() *echo.Echo {
 	config.InitENV()
 	zookeeper.Connect()
 	database.Connect()
-	util.HelperConnect()
+	utils.HelperConnect()
 
 	// New echo
 	e := echo.New()

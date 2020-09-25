@@ -6,7 +6,7 @@ import (
 
 	"demo-user/models"
 	"demo-user/services"
-	"demo-user/util"
+	"demo-user/utils"
 )
 
 // UserList ...
@@ -16,28 +16,28 @@ func UserList(c echo.Context) error {
 
 	// if err
 	if err != nil {
-		return util.Response400(c, nil, err.Error())
+		return utils.Response400(c, nil, err.Error())
 	}
 
 	// Success
-	return util.Response200(c, rawData, "")
+	return utils.Response200(c, rawData, "")
 }
 
 // UserCreate ...
 func UserCreate(c echo.Context) error {
 	var (
-		body = c.Get("body").(models.UserCreatePayload)
+		payload = c.Get("payload").(models.UserCreatePayload)
 	)
 
 	// Process data
-	rawData, err := services.UserCreate(body)
+	rawData, err := services.UserCreate(payload)
 
 	if err != nil {
-		return util.Response400(c, nil, err.Error())
+		return utils.Response400(c, nil, err.Error())
 	}
 
 	// Success
-	return util.Response200(c, bson.M{
+	return utils.Response200(c, bson.M{
 		"_id":       rawData.ID,
 		"createdAt": rawData.CreatedAt,
 	}, "")
@@ -55,9 +55,9 @@ func TransactionFindByUserID(c echo.Context) error {
 
 	// if err
 	if err != nil {
-		return util.Response400(c, nil, err.Error())
+		return utils.Response400(c, nil, err.Error())
 	}
 
 	// Success
-	return util.Response200(c, rawData, "")
+	return utils.Response200(c, rawData, "")
 }

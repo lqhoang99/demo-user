@@ -5,7 +5,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 
 	"demo-user/dao"
-	"demo-user/util"
+	"demo-user/utils"
 )
 
 func userCheckExistedByID(next echo.HandlerFunc) echo.HandlerFunc {
@@ -19,7 +19,7 @@ func userCheckExistedByID(next echo.HandlerFunc) echo.HandlerFunc {
 
 		// Check existed
 		if user.ID.IsZero() {
-			return util.Response404(c, nil, "Not found user")
+			return utils.Response404(c, nil, "Not found user")
 		}
 		return next(c)
 	}
